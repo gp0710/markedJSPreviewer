@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+  <script src="./js/marked.js"></script>
+
+  <script>
+    console.log(marked("# gabby"));
+
+    function updatePreview() {
+      let previewElement = document.getElementById("preview");
+      let editorView = document.getElementById("editor").value;
+      let markedUpHTML = marked(editorView);
+      previewElement.innerHTML = markedUpHTML;
+    }
+
+
+    function setDefault() {
+      let defaultText = `\
+# fCC Markdown Previewer
+## this is a h2
+[This is a markdown Link](https://github.com/markedjs/marked?utm_source=cdnjs&utm_medium=cdnjs_link&utm_campaign=cdnjs_library).
+
+<dl>
+<dt>Definition list</dt>
+<dd>Is something people use sometimes.</dd>
+
+<dt>Markdown in HTML</dt>
+<dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
+</dl>
+
+\`this is inline code \`
+
+\`\`\`
+const click = (the) => { image
+below to learn React
+}
+\`\`\`
+
+- this
+- is
+- a
+- list
+- item
+
+> this is a blockquote
+
+[![React JS course](https://media-exp3.licdn.com/dms/image/C4E0BAQGLKj3JHcof0w/company-logo_200_200/0/1589990867649?e=2159024400&v=beta&t=V8puy6s_dYMSAsGHDbhTWfKdLkqoQD5NBhIv3kkmJMQ)](https://youtu.be/nTeuhbP7wdE)
+
+**this is bold text**
+`;
+
+      let editorField = document.getElementById("editor")
+      let previewElement = document.getElementById("preview");
+      editorField.value = defaultText;
+      previewElement.innerHTML = marked(defaultText);
+    }
+
+  </script>
+</head>
+
+<style>
+  #editor {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  #preview {
+    margin-left: 20px;
+  }
+</style>
+
+<body onload="setDefault()">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col text-center text-white bg-dark">
+            <h1>Marked JS Previewer</h1>
+          </div>
+        </div>
+
+        <div class="container-fluid">
+          <div class="row bg-primary overflow-auto">
+            <h2 class="text-center text-white bg-danger">editor</h2>
+            <textarea class="form-control" id="editor" rows="10" cols="20" onkeyup="updatePreview()"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <h2 class="col text-center text-white bg-danger"> preview </h2>
+        <div id="preview">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+</html>
